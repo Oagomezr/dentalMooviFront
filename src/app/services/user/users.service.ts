@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Users } from '../models/users';
+import { Users } from '../../models/users';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +30,9 @@ export class UsersService {
 
   deleteUser(id:number):Observable<void>{
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+
+  checkIfValueExists(field: string, value: string) {
+    return this.http.get<boolean>(`${this.baseUrl}/checkValueExists/${field}/${value}`);
   }
 }
