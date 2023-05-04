@@ -1,1 +1,55 @@
-<p>sign-up works!</p>
+<div class="card">
+    <div class="card-body">
+        <form (ngSubmit)="createUser()" [formGroup]="userFormGroup">
+            <div class="form-group mb-2">
+                <label for="username">Nombre de usuario:</label>
+                <input type="text" class="form-control" formControlName="username">
+                <div class="alert alert-danger mb-2" *ngIf="userFormGroup.get('username')?.invalid && userFormGroup.get('username')?.dirty">
+                    <span *ngIf="userFormGroup.get('username')?.errors?.['required']">El nombre de usuario es obligatorio</span>
+                    <span *ngIf="userFormGroup.get('username')?.errors?.['uniqueValue']">Ese nombre de usuario ya existe</span>
+                    <span *ngIf="userFormGroup.get('username')?.errors?.['pattern']">El nombre de usuario no puede tener espacios, comas o caracteres especiales</span>
+                </div>
+            </div>
+            <div class="form-group mb-2">
+                <label for="firstName">Nombre:</label>
+                <input type="text" class="form-control" formControlName="firstName">
+            </div>
+            <div class="form-group mb-2">
+                <label for="lastName">Apellido:</label>
+                <input type="text" class="form-control" formControlName="lastName">
+            </div>
+            <div class="form-group mb-2">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" class="form-control" formControlName="email">
+                <div class="alert alert-danger mb-2" *ngIf="userFormGroup.get('email')?.invalid && userFormGroup.get('email')?.touched">
+                    <span *ngIf="userFormGroup.get('email')?.errors?.['required']">El email es obligatorio</span>
+                    <span *ngIf="userFormGroup.get('email')?.errors?.['email']">El email debe ser valido</span>
+                    <span *ngIf="userFormGroup.get('email')?.errors?.['uniqueValue']">Ese email ya existe</span>
+                </div>
+            </div>
+            <div class="form-group mb-2">
+                <label for="celPhone">Teléfono:</label>
+                <input type="tel" class="form-control" formControlName="celPhone">
+            </div>
+            <div class="form-group mb-2">
+                <label for="gender">Género:</label>
+                <select class="form-control" formControlName="gender">
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otro">Otro</option>
+                </select>
+            </div>
+            <div class="form-group mb-2">
+                <label for="birthday">Fecha de nacimiento:</label>
+                <input type="date" class="form-control" formControlName="birthday">
+            </div>
+            <div class="form-group mb-2">
+                <label for="password">Contraseña:</label>
+                <input type="password" class="form-control" formControlName="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Crear usuario</button>
+        </form>
+    </div>
+</div>
+
+<p>Email: {{ userFormGroup.get('email')?.value }}</p>
