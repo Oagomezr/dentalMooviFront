@@ -11,6 +11,10 @@ import { AdminComponent } from './components/admin/admin.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './components/home/header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,7 +31,8 @@ const routes: Routes = [
     LoginComponent,
     SignUpComponent,
     AdminComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,9 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

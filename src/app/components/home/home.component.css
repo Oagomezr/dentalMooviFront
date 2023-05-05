@@ -1,0 +1,13 @@
+:host {
+    display: block;
+}
+
+app-header{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 20vh;
+    background-color: aqua;
+}
+
